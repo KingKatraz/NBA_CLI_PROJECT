@@ -30,9 +30,9 @@ class Teams
 
     def self.find_by_name(name)
 
-        # self.all.select do |team| 
-        #     Teams.name.downcase == name 
-        # end 
+        self.all.select do |team| 
+            team.full_name.downcase == name 
+        end 
 
     end
 

@@ -34,8 +34,8 @@ class NBACLIPROJECT::CLI
 
     def teams_list 
 
-            Teams.all.each_with_index do |teams, index| 
-            puts "#{index + 1} #{Teams.name}"
+            Teams.all.each.with_index(1) do |team, index| 
+            puts "#{index} #{team.full_name}"
             end 
             
             
@@ -46,20 +46,37 @@ class NBACLIPROJECT::CLI
 
             input = gets.strip.downcase
 
-            #team_selection(input)
+            team_selection(input)
 
     end 
 
     def team_selection(team)
         
         tea = Teams.find_by_name(team)
-        tea.each do |t|
-           puts ":name #{t.name}" 
-           puts ":conference #{t.conference}" 
-           puts ":division #{t.division}" 
-           puts ":full_name #{t.full_name}" 
-        end
+        #tea.each do |t|
+           puts "city -> #{tea[0].city}" 
+           puts "conference -> #{tea[0].conference}" 
+           puts "division -> #{tea[0].division}" 
+           puts "full_name -> #{tea[0].full_name}" 
+        #end
 
+        puts ""
+        puts ""
+        puts "Do you want a list of teams or exit?"
+        puts "Enter 'teams' or 'exit'"
+        
+        input = gets.strip.downcase
+
+        if input == "teams" 
+            teams_list
+            menu
+        elsif input == "exit"
+            exit_msg
+        else
+            puts "invalid entry, try again!"
+            menu
+        end
+        
     end 
 
  
