@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby 
+
+
+require_relative '../lib/NBA_CLI_PROJECT.rb'
+
+
+NBACLIPROJECT::CLI.new.call
